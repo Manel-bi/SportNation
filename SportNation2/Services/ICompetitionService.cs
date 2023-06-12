@@ -9,6 +9,7 @@ namespace SportNation2.Services
 {
     public interface ICompetitionService
     {
+
         /// <summary>
         /// Création de compétition
         /// </summary>
@@ -16,6 +17,18 @@ namespace SportNation2.Services
         /// <param name="startDate">date de la compétition</param>
         /// <returns>ID de la nouvelle compétition</returns>
         Task<int> CreateCompetitionAsync(int sportId, string name, DateTime startDate);
-        Task CreateCompetitionEvent(int competitionId, CompetitionEventArguments args);
+        
+        Task CreateCompetitionEvent(int competitionId, AddCompetitionEventViewModel args);
+        Task<List<string>> GetCompetitionEvents(int competitionId);
+        Task<IEnumerable<CompetitionListViewModel>> GetNextCompetitionsAsync();
+        Task<IEnumerable<CompetitionListViewModel>> GetNextBackCompetitionsAsync();
+
+        Task<IEnumerable<DetailsCompetitionViewModel>> GetNextCompetitionsEvent(int competitionID);
+
+        Task<List<(int Id, string Name)>> GetSportsAsync();
+        Task ParticipateInCompetitionEvent(int eventId, int userId);
     }
 }
+
+    
+

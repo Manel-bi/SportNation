@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SportNation2.Data.Models.DetailsCompetitionViewModel>
+
+
+@{
+    ViewData["Title"] = "Liste des epreuves ";
+}
+
+<h1>Liste des epreuves </h1>
+
+<p>
+
+    <a asp-action="Index">Liste des compétitions </a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaximumAge)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.MaxParticipants)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEvent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimumAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaximumAge)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxParticipants)
+            </td>
+           
+          
+                <td>
+                    @Html.ActionLink("Participer", "Participate","Competition", new { eventId = item.IdEvent  ,method = "post"}, new { @class = "btn btn-primary" })
+                </td>
+        </tr>
+           
+}
+    </tbody>
+</table>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

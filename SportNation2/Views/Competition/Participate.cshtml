@@ -1,0 +1,18 @@
+﻿@model SportNation2.Data.Models.Participation
+
+@{
+    ViewData["Title"] = "Participate";
+}
+
+<h1>Participate</h1>
+
+<h2> participation avec succées</h2>
+<h2> participation avec succéess</h2>
+<div>
+    <a asp-action="Index">Liste des competitions</a>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
